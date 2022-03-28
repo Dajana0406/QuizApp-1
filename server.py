@@ -8,16 +8,17 @@ app = Flask(__name__)
 @app.route('/',methods = ['POST', 'GET'])
 def root():
     return render_template("index.html")
-    
-#Pārbaudes lapa, lai saprastu, ka kods vispār strādā
-@app.route('/health')
-def health():
-  return "OK"
 
 @app.route('/test')
 def test():
   parametri = ["augums","svars","vecums"]
-  return render_template("test.html",param=parametri)
+  image=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUDdTpf8NQuBtdrBgSKRtn7chovffMKPtiA&usqp=CAU"]
+  return render_template("test.html",param=parametri)  
+
+#Pārbaudes lapa, lai saprastu, ka kods vispār strādā
+@app.route('/health')
+def health():
+  return "OK"
   
 @app.route('/about')
 def about():
