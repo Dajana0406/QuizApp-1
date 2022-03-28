@@ -4,6 +4,21 @@ from flask import render_template
 
 app = Flask(__name__)
 
+def loadAllPictures():
+  filepath = 'picDB.txt'
+  pictures = []
+   with open(filepath) as fp:
+    line = fp.readline()
+    cnt = 1
+    while line:
+      if line!='':
+        fullPicInfo = line.strip().split(';')
+        pictures.append(fullPicInfo[1])
+      line = fp.readline()
+      cnt += 1
+  fp.close()
+  return pictures
+
 #Pirmā lapa, kas tiks ielādēta
 @app.route('/',methods = ['POST', 'GET'])
 def root():
@@ -12,7 +27,7 @@ def root():
 @app.route('/test')
 def test():
   parametri = ["augums","svars","vecums"]
-  images=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUDdTpf8NQuBtdrBgSKRtn7chovffMKPtiA&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZW_hmPGvpEhTi7bLpyqGGh_5T-3yrHjlplg&usqp=CAU","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZnYcDBnvYQd3p7mBqHPColzGvTrsqNwhiOg&usqp=CAU"]
+  images=loadAllPictures()
   return render_template("test.html",param=parametri,images=images)  
 
 #Pārbaudes lapa, lai saprastu, ka kods vispār strādā
