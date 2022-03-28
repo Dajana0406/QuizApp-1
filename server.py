@@ -7,7 +7,7 @@ app = Flask(__name__)
 def loadAllPictures():
   filepath = 'picDB.txt'
   pictures = []
-   with open(filepath) as fp:
+  with open(filepath) as fp:
     line = fp.readline()
     cnt = 1
     while line:
