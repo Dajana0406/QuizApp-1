@@ -12,8 +12,8 @@ def root():
 @app.route('/test')
 def test():
   parametri = ["augums","svars","vecums"]
-  image=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUDdTpf8NQuBtdrBgSKRtn7chovffMKPtiA&usqp=CAU"]
-  return render_template("test.html",param=parametri)  
+  images=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUDdTpf8NQuBtdrBgSKRtn7chovffMKPtiA&usqp=CAU"]
+  return render_template("test.html",param=parametri,images=images)  
 
 #Pārbaudes lapa, lai saprastu, ka kods vispār strādā
 @app.route('/health')
